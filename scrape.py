@@ -20,9 +20,9 @@ file_name = filename[0] + '.txt'
 
 subject = dt + " Costco.ca Scrape"
 body = "This is an automated email from the scrapper hosted on GCP. The results are attached to this email. Check for a csv file with today's date as the file name"
-sender_email = "your_email@gmail.com"
-receiver_email = "add receiver's email here"
-password = "your gmail password"
+sender_email = "sender@gmail.com"
+receiver_email = "reciever@gmail.com"
+password = "password"
 
 message = MIMEMultipart()
 message["From"] = sender_email
