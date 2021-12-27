@@ -23,9 +23,9 @@ file_name = filename[0] + 'promo.txt'
 
 subject = dt + " Scrape"
 body = "This is the list of products on promo today."
-sender_email = "sender@gmail.com"
-receiver_email = "reciever@gmail.com"
-password = "password"
+sender_email = "oom.taiwo@gmail.com"
+receiver_email = "olumayoor99@gmail.com"
+password = "!987!61255"
 
 message = MIMEMultipart()
 message["From"] = sender_email
@@ -53,7 +53,10 @@ while True:
         caption = soup.find_all("div",attrs={'class':'product'})
 
         for c in caption:
-            price = c.find("div",attrs={'class':'price'}).text.replace("\n","").replace("\t","")
+            try:
+                price = c.find("div",attrs={'class':'price'}).text.replace("\n","").replace("\t","")
+            except Exception as e:
+                promo = "No Price"
             name = c.find("span",attrs={'class':'description'}).text.replace("\n","").replace("\t","")
             url_link = c.find('span',attrs={'class':'description'}).a["href"]
             
@@ -62,7 +65,7 @@ while True:
             except Exception as e:
                 promo = "Normal"
             if 'OFF' in promo:
-                myfile = open(file_name, 'a')
+                myfile = open(file_name, 'a',encoding='utf-8')
                 product_info = name + ', ' + price + ', ' + url_link
                 myfile.write("%s\n" % product_info)
                 myfile.close()
